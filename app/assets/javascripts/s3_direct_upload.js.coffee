@@ -67,8 +67,8 @@ $.fn.S3Uploader = (options) ->
       progress: (e, data) ->
         console.log(data)
         progress = parseInt(data.loaded / data.total * 100, 10)
-        content = { progress: progress, unique_id: data.files[0].unique_id}
-        $uploadForm.trigger("s3_upload_progress", [e, content])
+        content = { event: e, progress: progress, unique_id: data.files[0].unique_id}
+        $uploadForm.trigger("s3_upload_progress", [content])
         if data.context
           data.context.find('.bar').css('width', progress + '%')
 
