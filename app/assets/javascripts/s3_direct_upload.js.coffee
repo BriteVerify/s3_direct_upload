@@ -65,7 +65,6 @@ $.fn.S3Uploader = (options) ->
         $uploadForm.trigger("s3_uploads_start", [e])
 
       progress: (e, data) ->
-        console.log(data)
         progress = parseInt(data.loaded / data.total * 100, 10)
         content = { event: e, progress: progress, unique_id: data.files[0].unique_id}
         $uploadForm.trigger("s3_upload_progress", [content])
